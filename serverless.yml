@@ -1,0 +1,21 @@
+service: aws-lambda-serverless-nextjs
+provider:
+  memorySize: 512
+  name: aws
+  profile: william
+  region: us-east-1
+  runtime: nodejs8.10
+functions:
+  react:
+    handler: server.handler
+    events:
+      - http:
+          cors: true
+          method: any
+          path: /
+      - http:
+          cors: true
+          method: any
+          path: '{proxy+}'
+plugins:
+  - serverless-offline

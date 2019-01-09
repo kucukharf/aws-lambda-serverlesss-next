@@ -1,0 +1,53 @@
+{
+	"author": {
+		"email": "prefinem@gmail.com",
+		"name": "Prefinem",
+		"url": "https://prefinem.com"
+	},
+	"dependencies": {
+		"next": "^7.0.2",
+		"react": "^16.6.3",
+		"react-dom": "^16.6.3"
+	},
+	"description": "An AWS Lambda Serverless Next.js example project",
+	"devDependencies": {
+		"eslint": "^5.7.0",
+		"eslint-config-prettier": "^3.1.0",
+		"eslint-plugin-react": "^7.11.1",
+		"husky": "^1.2.0",
+		"lint-staged": "^8.0.0",
+		"prettier": "^1.14.3",
+		"serverless": "^1.33.0",
+		"serverless-offline": "^3.31.3"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "yarn staged"
+		}
+	},
+	"license": "MIT",
+	"lint-staged": {
+		"*.js": [
+			"eslint --fix",
+			"prettier --config ./.prettierrc.json --write",
+			"jest --bail --findRelatedTests",
+			"git add"
+		]
+	},
+	"name": "aws-lambda-serverless-nextjs",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Prefinem/aws-lambda-serverless-nextjs"
+	},
+	"scripts": {
+		"build": "next build",
+		"clean": "yarn lint && yarn prettify",
+		"deploy": "next build && sls deploy",
+		"dev": "next",
+		"eslint-check": "eslint --print-config .eslintrc.json | eslint-config-prettier-check",
+		"lint": "eslint server.js --fix",
+		"prettify": "prettier --config ./.prettierrc.json --write src/",
+		"staged": "lint-staged",
+		"start": "next"
+	}
+}
